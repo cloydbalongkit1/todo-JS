@@ -1,0 +1,41 @@
+<%- include("header") -%>
+
+    <div class="container">
+        <h1><%= listTitle %></h1>
+
+        <form class="" action="/" method="post">
+            <input type="text" 
+                   name="newItem" 
+                   placeholder="New Input" 
+                   autocomplete="off"
+                >
+            <button type="submit" 
+                    name="list" 
+                    value="<%= listTitle %>"
+            >Add Post</button>
+        </form>
+
+        <h4>Scheduled Today:</h4>
+
+        <div class="to-do-output">
+            
+            <% newListItems.forEach( (item) => { %>
+                <form class="" action="/delete" method="post">
+                    <div class="inner-to-do">
+                        <input value="<%= item._id %>" 
+                               type="checkbox" 
+                               class="checkbox" 
+                               id="checkbox-input" 
+                               onChange="this.form.submit()" 
+                               name="checkbox"
+                            >
+                        <p id="todo-action"><%= item.name %></p>
+                    </div>
+                </form>
+            <% }); %>
+            
+        </div>
+    </div>
+
+
+<%- include("footer") -%>
